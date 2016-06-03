@@ -4,6 +4,8 @@ namespace pre_interview_test.models
 {
     public class Training
     {
+        public int Id { get; set; }
+
         public string Name { get; set; }
         public string Description { get; set; }
 

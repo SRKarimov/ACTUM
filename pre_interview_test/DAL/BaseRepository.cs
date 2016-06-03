@@ -1,9 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Data.Linq;
 using System.Data.Entity;
 using System.Linq.Expressions;
 
@@ -11,8 +8,8 @@ namespace pre_interview_test.DAL
 {
     public class BaseRepository<T> : IRepository<T> where T : class
     {
-        private Context _ctx;
-        private DbSet<T> _dbSet;
+        protected Context _ctx;
+        protected DbSet<T> _dbSet;
 
         public BaseRepository(Context ctx)
         {
@@ -37,7 +34,7 @@ namespace pre_interview_test.DAL
 
         public void Update(T entity)
         {
-            
+            _ctx.Entry(entity).State = EntityState.Modified;
         }
 
         public void Delete(T entity)

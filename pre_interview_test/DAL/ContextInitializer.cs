@@ -25,9 +25,15 @@ namespace pre_interview_test.DAL
 
             var employees = new List<Employee>
             {
-                new Employee { Name = "Sergei", Surname = "Karimov", Trainings = new List<Training>() { cs, win10 } }
+                new Employee { Name = "Sergei", Surname = "Karimov", Trainings = new List<Training>() { cs, win10 } },
+                new Employee { Name = "John", Surname = "Doe", Trainings = new List<Training>() { win10, dotnet } }
             };
 
+            foreach(var item in employees)
+            {
+                context.Employees.Add(item);
+            }
+            context.SaveChanges();
         }
     }
 }

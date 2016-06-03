@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
+﻿using pre_interview_test.DAL;
 using pre_interview_test.models;
+using System;
 
 namespace pre_interview_test
 {
@@ -12,6 +8,17 @@ namespace pre_interview_test
     {
         static void Main(string[] args)
         {
+            using (var db = new Context())
+            {
+                Console.WriteLine("Application is started");
+                foreach (var item in db.Employees)
+                {
+                     Console.WriteLine(item.Name);
+                }
+
+                Console.WriteLine("Press any key to exit...");
+                Console.ReadKey();
+            }
         }
     }
 }

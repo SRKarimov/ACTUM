@@ -14,9 +14,9 @@ namespace pre_interview_test.DAL
         public DbSet<Employee> Employees { get; set; }
         public DbSet<Training> Trainings { get; set; }
 
-        protected override void OnModelCreating(DbModelBuilder modelBuilder)
-        {
-            modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
-        }
+//        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+//        {
+//            modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
+//        }
     }
 }

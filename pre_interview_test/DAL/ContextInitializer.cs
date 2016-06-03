@@ -9,18 +9,18 @@ namespace pre_interview_test.DAL
 {
     public class ContextInitializer : DropCreateDatabaseIfModelChanges<Context>
     {
-        protected override void Seed(Context context)
+        protected override void Seed(Context ctx)
         {
             var trainings = new List<Training>();
             Training cs = new Training { Name = "C#", Description = "" };
             Training dotnet = new Training { Name = "ASP.NET", Description = "" };
             Training win10 = new Training { Name = "Windows 10", Description = "" };
 
-            context.Trainings.Add(cs);
-            context.Trainings.Add(dotnet);
-            context.Trainings.Add(win10);
+            ctx.Trainings.Add(cs);
+            ctx.Trainings.Add(dotnet);
+            ctx.Trainings.Add(win10);
 
-            context.SaveChanges();
+            ctx.SaveChanges();
 
 
             var employees = new List<Employee>
@@ -31,9 +31,9 @@ namespace pre_interview_test.DAL
 
             foreach(var item in employees)
             {
-                context.Employees.Add(item);
+                ctx.Employees.Add(item);
             }
-            context.SaveChanges();
+            ctx.SaveChanges();
         }
     }
 }

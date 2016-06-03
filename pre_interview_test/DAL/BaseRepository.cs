@@ -20,6 +20,7 @@ namespace pre_interview_test.DAL
         public void Create(T entity)
         {
             _ctx.Set<T>().Add(entity);
+            Save();
         }
 
         public T Find(Expression<Func<T, bool>> predicate)
@@ -35,11 +36,13 @@ namespace pre_interview_test.DAL
         public void Update(T entity)
         {
             _ctx.Entry(entity).State = EntityState.Modified;
+            Save();
         }
 
         public void Delete(T entity)
         {
             _dbSet.Remove(entity);
+            Save();
         }
 
         public ICollection<T> List()

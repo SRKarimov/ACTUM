@@ -11,11 +11,13 @@ namespace pre_interview_test.DAL
 {
     public class BaseRepository<T> : IRepository<T> where T : class
     {
-        DbContext _ctx;
+        private Context _ctx;
+        private DbSet<T> _dbSet;
 
-        public BaseRepository(DbContext ctx)
+        public BaseRepository(Context ctx)
         {
             this._ctx = ctx;
+            this._dbSet = _ctx.Set<T>();
         }
 
         public void Create(T entity)
@@ -25,7 +27,12 @@ namespace pre_interview_test.DAL
 
         public T Find(Expression<Func<T, bool>> predicate)
         {
-            return _ctx.Set<T>().Where(predicate).FirstOrDefault();
+            return _dbSet.Where(predicate).FirstOrDefault();
+        }
+
+        public T Find(object id)
+        {
+            return _dbSet.Find(id);
         }
 
         public void Update(T entity)
@@ -35,12 +42,12 @@ namespace pre_interview_test.DAL
 
         public void Delete(T entity)
         {
-            _ctx.Set<T>().Remove(entity);
+            _dbSet.Remove(entity);
         }
 
         public ICollection<T> List()
         {
-            return _ctx.Set<T>().ToList();
+            return _dbSet.ToList();
         }
 
         public void Save()

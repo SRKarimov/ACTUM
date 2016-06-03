@@ -57,7 +57,7 @@
     <Compile Include="DAL\Context.cs" />
     <Compile Include="DAL\ContextInitializer.cs" />
     <Compile Include="DAL\IRepository.cs" />
-    <Compile Include="DAL\SQLRepository.cs" />
+    <Compile Include="DAL\BaseRepository.cs" />
     <Compile Include="models\Employee.cs" />
     <Compile Include="models\Training.cs" />
     <Compile Include="Program.cs" />
